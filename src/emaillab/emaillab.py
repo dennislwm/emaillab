@@ -21,7 +21,13 @@ def compose_msg(data):
   msg['From']         = data["user"]["name"]
   msg['To']           = data["addressee"]["to"]
   msg['Subject']      = data["addressee"]["subject"]
-  msg.attach( MIMEText( data["addressee"]["body"] ) )
+  msg.attach( MIMEText( data["addressee"]["body"], 'plain' ) )
+
+  #-----------------------
+  # optional pixel tracker
+  pixel = data["addressee"]["pixel"]
+  if pixel:
+    msg.attach( MIMEText( pixel, 'html' ) )
 
   #--------------------
   # optional attachment

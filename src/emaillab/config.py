@@ -38,6 +38,7 @@ def create_file(filename):
       subject: ""
       body: ""
       attachment: ""
+      pixel: ""
   """)
   data = yaml.load(init)
 
@@ -50,6 +51,7 @@ def create_file(filename):
   data["addressee"]["subject"]    = input("Enter addressee subject (required): ")
   data["addressee"]["body"]       = input_multi_line_str("Enter addressee body (required type '|' for multi line): ")
   data['addressee']['attachment'] = input("Enter addressee attachment (optional): ")
+  data["addressee"]["pixel"]      = input("Enter addressee pixel (optional): ")
 
   with open(filename, 'w') as file:
     yaml.dump(data, file)

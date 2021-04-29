@@ -14,6 +14,12 @@ def main():
   # load config
   data = config.load_file(new_file)
 
+  #-------------
+  # confirmation
+  str_confirm = input(f"Do you want to send this email (only 'yes' will be accepted)? ")
+  if not str_confirm.lower() == 'yes':
+    return
+
   #------------
   # auth client
   smtp = emaillab.auth_client(data)
